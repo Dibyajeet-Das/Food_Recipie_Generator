@@ -1,0 +1,313 @@
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+.navbar {
+    background-color: rgba(51, 51, 51, 0.8);
+    overflow: hidden;
+}
+.navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.navbar .brand {
+    margin-left: 20px; 
+    font-size: x-large;
+}
+.navbar .nav-items {
+    display: flex;
+    margin-right: 20px; 
+}
+.navbar li {
+    margin: 0 15px; 
+}
+.navbar li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    position: relative;
+}
+.navbar li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    display: block;
+    margin-top: 5px;
+    right: 0;
+    background: #fff;
+    transition: width 0.4s ease;
+    -webkit-transition: width 0.4s ease;
+}
+.navbar li a:hover::after {
+    width: 100%;
+    left: 0;
+    background: #fff;
+}
+.navbar li a:hover {
+    background-color: rgba(221, 221, 221, 0.8); /* Slight transparency */
+    color: black;
+}
+.hero {
+    background-image: url('Images/1.jpg');
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 2em;
+    transition: background-image 2s ease-in-out;
+}
+.gallery {
+    padding: 80px;
+    background-color: #f4f4f4;
+}
+.gallery h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.image-container {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    flex-wrap: wrap;
+}
+
+.image-box {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s; /*to create smooth visual effects when changing properties of an element over a specified duration*/
+    perspective: 1000px;/*This is used to get the 3d effect*/
+}
+.image-box:hover {
+    transform: scale(1.10); /*used in CSS to slightly enlarge an element*/
+}
+.image-box-inner {
+    position: absolute; /*positioned relative to the nearest positioned ancestor*/
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d; 
+    /*It Maintains The 3d Transformation after the mouse is being Hovered over the Image To Get The inner Box*/
+}
+.image-box:hover .image-box-inner {
+    transform: rotateY(180deg);
+    /*to rotate an element 180 degrees around its Y-axis, essentially flipping it completely on a vertical 
+    axis,creating a "flip card" effect where the back side of the element faces the viewer*/
+}
+.image-box-front, .image-box-back {
+    /*Position the front and back side */
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden; /*to prevent the back side of an element from being visible when it 
+    is rotated in 3D space, essentially hiding the "mirror image" that would normally appear when an 
+    element is flipped around*/
+}
+.image-box-front {
+    /*Style the front side*/
+    background: #ffffff; /*Helps to change the edge color when we are fliping the card*/
+}
+.image-box-back {
+    /* Style the back side of the card After The image or card is being fliped */
+    background: #525151;
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    box-sizing: border-box;
+    color: white;
+}
+.image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+}
+.image-box:hover img {
+    transform: rotateY(180deg);
+}
+.details {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotateY(180deg);
+    opacity: 0;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 10px;
+    transition: opacity 0.5s;
+}
+.image-box:hover .details {
+    opacity: 1;
+}
+.search-section {
+    margin-top: 50px;
+}
+.recipes-section {
+    margin-top: 50px;
+}
+/*----------------------------------------------------------------------------------------*/
+/* Slide-out effect before changing */
+.slide-out {
+    transform: translateX(-100%);
+    opacity: 0;
+    transition: transform 0.9s ease-in-out, opacity 0.9s ease-in-out;
+}
+
+/* Fade-in-right effect when new images appear */
+.slide-in {
+    transform: translateX(100%);
+    opacity: 0;
+    transition: transform 0.9s ease-in-out, opacity 0.9s ease-in-out;
+}
+
+.active {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+/*----------------------------------------------------------------------------------------*/
+/*Search Bar we are Using*/
+#recipe-search {
+    width: 300px;
+    height: 40px;
+    font-size: 16px;
+    padding: 10px;
+    border: 2px solid #747574;
+    border-radius: 20px;
+    outline: none;
+    transition: all 0.3s ease-in-out;
+}
+
+#recipe-search:focus {
+    width: 350px; /* Expands on focus */
+    border-color: #ff5722;
+}
+
+/* Style the button */
+button {
+    height: 42px;
+    font-size: 16px;
+    padding: 10px 20px;
+    background: #747574;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+button:hover {
+    background: #ff5722;
+}
+/*--------------------------------X----------------------------*/
+.Description {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 1000px;
+    margin: 50px auto;
+    padding: 20px;
+    gap: 20px;
+}
+
+.text-box {
+    flex: 1;
+}
+
+.text-box h2 {
+    font-size: 28px;
+    color: #333;
+}
+
+.text-box p {
+    font-size: 19px;
+    color: #666;
+    margin-top: 10px;
+}
+
+.image1 {
+    flex: 1;
+}
+
+.image1 img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .image1 img {
+        width: 80%; /* Adjust size for mobile */
+    }
+}
+/*----------------------------------------------------*/
+footer {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    position: absolute;
+    width: 100%;
+}
+footer a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+}
+footer a:hover {
+    text-decoration: underline;
+}
+.food-name {
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.recipe-box {
+    background-color: #2c2c2c;  /* Dark gray background */
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: left;  /* ✅ Keep recipe text left-aligned */
+}
+
+.recipe-box h3 {
+    color: #ffcc00;  /* Gold color for the title */
+    margin-bottom: 10px;
+    text-align: center;  /* ✅ Center the title */
+}
+
+.recipe-box ul {
+    padding-left: 20px;
+}
+
+.recipe-box li {
+    margin: 5px 0;
+    list-style-type: "⭐"; /* Custom bullet point */
+}

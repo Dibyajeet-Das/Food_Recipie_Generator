@@ -1,0 +1,102 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Delight</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <script defer src="{% static 'script.js' %}"></script>
+    
+</head>
+<body>
+    <nav class="navbar">
+        <ul>
+            <li class="brand"><a href="#home" style="font-style: italic; font-weight: bold;">Food Delight</a></li>
+            <div class="nav-items">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#search">Search</a></li>
+                <li><a href="#recipes">Recipes</a></li>
+            </div>
+        </ul>
+    </nav>
+
+    <header class="hero" id="home">
+        <h1>Welcome to Food Delight</h1>
+    </header>
+    <div class="Description">
+        <div class="text-box">
+            <h2>​ Homemade Meals: The Key to Better Health​</h2>
+            <p>"Cooking at home lets you control your ingredients and make healthier choices. Discover delicious homemade recipes today!"</p>
+        </div>
+        <div class="image1">
+            <img src="{% static '/images/Part1.jpg' %}" alt="Chef Making Food">
+        </div>
+    </div>
+    <section class="gallery" id="gallery">
+        <h2>ʟᴇᴛ ᴛʜᴇ ᴀɪ ᴀꜱꜱɪꜱᴛ ʏᴏᴜ 😊</h2>
+        <div class="image-container">
+            <div class="image-box">
+                <div class="image-box-inner">
+                    <div class="image-box-front">
+                        <img src="{% static '/images/Dish1.jpg' %}" alt="Dish 1">
+                        <div class="details">Personalized & Smart Cooking:</div>
+                    </div>
+                    <div class="image-box-back" id="Description1">
+                        <p>Generated just for you!</p>
+                        <p>A recipe made by AI, inspired by you!</p>
+                        <p>Smart ingredients, delicious results!</p>
+                    </div>
+
+                </div>
+            </div>
+            <div class="image-box">
+                <div class="image-box-inner">
+                    <div class="image-box-front">
+                        <img src="{% static '/images/Dish2.jpg' %}" alt="Dish 2">
+                        <div class="details">Call-to-Action:</div>
+                    </div>
+                    <div class="image-box-back" id="Description2">
+                        <p>Click to generate your recipe!</p>
+                        <p>Let AI surprise you with a dish!</p>
+                        <p>What’s cooking? Let AI decide!</p>
+                    </div>
+                </div>
+            </div>
+            <div class="image-box">
+                <div class="image-box-inner">
+                    <div class="image-box-front">
+                        <img src="{% static '/images/Dish3.jpg' %}" alt="Dish 3">
+                        <div class="details">Healthy & Efficient:</div>
+                    </div>
+                    <div class="image-box-back" id="Description3">
+                        <p>Balanced meals in seconds!</p>
+                        <p>AI-powered recipes for a healthier you!</p>
+                        <p>Quick, easy, and nutritious!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="search-section" id="search">
+        <input type="text" id="recipe-search" placeholder="Search for recipes like: Samosa">
+        <button id="search-btn">Search</button>
+    </section>
+
+    <section class="recipes-section" id="recipes">
+        <h2>Generated Recipes</h2>
+        <div id="recipe-results"></div>
+    </section>
+    <footer>
+        <p>Follow us on:</p>
+        <a href="https://facebook.com" target="_blank">Facebook</a> |
+        <a href="https://twitter.com" target="_blank">Twitter</a> |
+        <a href="https://instagram.com" target="_blank">Instagram</a>
+        <p>&copy; 2025 AI Recipe Generator. All rights reserved.</p>
+    </footer>
+   
+</body>
+</html>
