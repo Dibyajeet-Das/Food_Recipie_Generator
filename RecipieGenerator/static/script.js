@@ -117,7 +117,12 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        resultDiv.innerHTML = "<p>🔄 Generating recipe...</p>";
+        resultDiv.innerHTML = `
+        <div class="loading-container">
+            <p>🔄 Generating recipe...</p>
+            <img src="/static/images/Generate.gif" alt="Loading" class="loading-gif">
+        </div>
+        `;
 
         try {
             console.log(`🔍 Fetching: /get-recipe/?dish=${dish}`);
@@ -148,3 +153,19 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+
+document.querySelector('.subscribe-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    const email = this.querySelector('input').value;
+    alert("Thanks for subscribing, " + email );
+    this.reset();
+  });
+ 
+  document.addEventListener("DOMContentLoaded", function () {
+    const hamburger = document.getElementById("hamburger");
+    const navMenu = document.getElementById("nav-menu");
+
+    hamburger.addEventListener("click", () => {
+        navMenu.classList.toggle("show");
+    });
+});
