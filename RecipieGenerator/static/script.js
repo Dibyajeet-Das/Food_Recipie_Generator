@@ -1,4 +1,16 @@
 
+/*--------------------------------------------------------------------------------------*/
+//Function is used for menu toggle when the screen is small
+document.addEventListener("DOMContentLoaded", function () {
+    //DOMContentLoaded helps to make the html elements available for any changes
+    const hamburger = document.getElementById("hamburger");
+    const navMenu = document.getElementById("nav-menu");
+
+    hamburger.addEventListener("click", () => {
+        navMenu.classList.toggle("show");
+    });
+});
+/*--------------------------------------------------------------------------------------*/
 let images = ['/static/images/1.jpg', '/static/images/2.jpg', '/static/images/3.jpg'];
 let index = 0;
 
@@ -98,18 +110,20 @@ setInterval(ChangePlaceHolder,2000);
 
 /*--------------------------------------------------------------------------------------*/
 document.addEventListener("DOMContentLoaded", function () {
-    console.log("✅ DOM Loaded");
+    console.log("DOM Loaded");
 
     const searchButton = document.getElementById("search-btn");
     const resultDiv = document.getElementById("recipe-results");
 
     if (!searchButton || !resultDiv) {
-        console.error("❌ Error: Button or result div not found.");
+        console.error("❌Error: Button or result div not found.");
         return;
     }
 
     searchButton.addEventListener("click", async function () {
         let inputField = document.getElementById("recipe-search");
+        //Here .value helps to extract the text and trim() function helps to remove the extra spaces
+        //from the start and end of the string
         let dish = inputField.value.trim();
 
         if (!dish) {
@@ -126,6 +140,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
         try {
             console.log(`🔍 Fetching: /get-recipe/?dish=${dish}`);
+            //await is used to wait for the fetch function to complete before moving
+            //encodes special characters in a string so it can safely be used in a URL.helps change the the spaces into symbols
+            //any special character in the string which will easy to transmit over the network
             let response = await fetch(`/get-recipe/?dish=${encodeURIComponent(dish)}`);
 
             if (!response.ok) {
@@ -136,7 +153,7 @@ document.addEventListener("DOMContentLoaded", function () {
             let data = await response.json();
             console.log("✅ Recipe Data:", data);
 
-            // Convert recipe text into bullet points
+            // Convert recipe text into points
             let recipeLines = data.recipe.split("\n").filter(line => line.trim() !== "");  
             let formattedRecipe = recipeLines.map(line => `<li>${line}</li>`).join("");
 
@@ -147,7 +164,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 </div>
             `;
         } catch (error) {
-            console.error("❌ Error fetching recipe:", error);
+            console.error("Error fetching recipe:", error);
             resultDiv.innerHTML = "<p style='color:red;'>❌ Failed to fetch recipe. Try again.</p>";
         }
     });
@@ -155,17 +172,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 document.querySelector('.subscribe-form').addEventListener('submit', function (e) {
-    e.preventDefault();
+    e.preventDefault(); // this  function helps to prevent from reloading the page
     const email = this.querySelector('input').value;
     alert("Thanks for subscribing, " + email );
-    this.reset();
+    this.reset(); // after the user compilation of information reset the form
   });
  
-  document.addEventListener("DOMContentLoaded", function () {
-    const hamburger = document.getElementById("hamburger");
-    const navMenu = document.getElementById("nav-menu");
-
-    hamburger.addEventListener("click", () => {
-        navMenu.classList.toggle("show");
-    });
-});
+  

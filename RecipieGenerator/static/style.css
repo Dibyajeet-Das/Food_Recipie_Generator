@@ -4,7 +4,7 @@ body {
     padding: 0;
     text-align: center;
 }
-
+/*Nav Bar Section*/
 .navbar {
     background-color: rgba(51, 51, 51, 0.8);
     overflow: hidden;
@@ -66,7 +66,7 @@ body {
     color: black;
 }
 
-/* 🍔 Hamburger menu (hidden on desktop) */
+/*Hamburger menu (hidden on desktop)*/
 .hamburger {
     display: none;
     font-size: 26px;
@@ -94,7 +94,6 @@ body {
     transition: background-image 2s ease-in-out;
 }
 
-/* ✅ Mobile Responsive Layout */
 @media (max-width: 768px) {
     .navbar ul {
         flex-direction: column;
@@ -104,12 +103,14 @@ body {
     .navbar .nav-items {
         flex-direction: column;
         width: 100%;
-        display: none; /* Hide menu by default */
+        /*Helps to hide the menu*/
+        display: none; 
         background-color: rgba(51, 51, 51, 0.95);
     }
 
     .navbar .nav-items.show {
-        display: flex; /* Show when toggled */
+        /*It will be displayed when it is toggled*/
+        display: flex;
     }
 
     .hamburger {
@@ -141,7 +142,7 @@ body {
         padding: 10px;
     }
 }
-
+/*----------------------------------------------------------------------------------------*/
 .gallery {
     padding: 80px;
     background-color: #f4f4f4;
@@ -238,7 +239,7 @@ body {
     margin-top: 50px;
 }
 /*----------------------------------------------------------------------------------------*/
-/* Slide-out effect before changing */
+/*Slide-out effect before changing */
 .slide-out {
     transform: translateX(-100%);
     opacity: 0;
@@ -258,7 +259,7 @@ body {
 }
 
 /*----------------------------------------------------------------------------------------*/
-/*Search Bar we are Using*/
+/* Search Bar we are Using */
 #recipe-search {
     width: 300px;
     height: 40px;
@@ -271,11 +272,12 @@ body {
 }
 
 #recipe-search:focus {
-    width: 350px; /* Expands on focus */
+    /* Helps to increase the size of search button */
+    width: 350px; 
     border-color: #ff5722;
 }
 
-/* Style the button */
+/* Style for the button */
 button {
     height: 42px;
     font-size: 16px;
@@ -327,7 +329,6 @@ button:hover {
     border-radius: 10px;
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
     .container {
         flex-direction: column;
@@ -335,7 +336,7 @@ button:hover {
     }
 
     .image1 img {
-        width: 80%; /* Adjust size for mobile */
+        width: 80%;
     }
 }
 /*----------------------------------------------------*/
@@ -353,28 +354,30 @@ button:hover {
     height: auto;  
 }
 
-/* Responsive scaling */
 @media (max-width: 600px) {
     .loading-gif {
         width: 150px;
     }
 }
-/*----------------------------------------------------*/
-
+/*--------------------------------------------------------------------------------------*/
+/*Generated Recipie*/
 .recipe-box {
-    background-color: #2c2c2c;  /* Dark gray background */
+    background-color: #2c2c2c;
     color: white;
     padding: 15px;
     border-radius: 10px;
     margin-top: 20px;
     box-shadow: 0px 4px 8px rgba(243, 185, 185, 0.2);
-    text-align: left;  /* ✅ Keep recipe text left-aligned */
+    /*Keep recipe text left-aligned which is being generated*/
+    text-align: left;  
 }
 
 .recipe-box h3 {
-    color: #ffcc00;  /* Gold color for the title */
+    /*Gold color for the title*/
+    color: #ffcc00;  
     margin-bottom: 10px;
-    text-align: center;  /* ✅ Center the title */
+    /*Center the title*/
+    text-align: center;  
 }
 
 .recipe-box ul {
@@ -383,11 +386,12 @@ button:hover {
 
 .recipe-box li {
     margin: 5px 0;
-    list-style-type: "⭐"; /* Custom bullet point */
+    list-style-type: "⭐"; /*Custom bullet point*/
 }
 
 
-/*----------------------------------------------------*/
+/*-------------------------------------------------------------------------*/
+/* Footer Section*/
 .footer {
     background: linear-gradient(to right, #fef9c3, #fde68a);
     color: #333;
@@ -437,10 +441,10 @@ button:hover {
   }
   
   .subscribe-banner {
-    background: url('Images/foot.jpg') no-repeat center center;
+    background: url('Images/foot.jpg') no-repeat center;
     background-size: cover;
     background-position: center 35%;
-    padding: 60px 20px; /* Increase padding if you want content to breathe */
+    padding: 60px 20px; 
     min-height: 250px;
     margin-top: 30px;
     color: white;
@@ -498,7 +502,7 @@ button:hover {
     padding-bottom: 20px;
   }
   
-    /* 🔄 Responsive Design */
+    /*Responsive Design for the footer */
     @media (max-width: 768px) {
     .footer-container {
       flex-direction: column;
@@ -514,10 +518,12 @@ button:hover {
     .subscribe-form {
       display: flex;
       flex-direction: column;
-      gap: 10px; /* Adds spacing between input and button */
+      /* Adds spacing between input and button */
+      gap: 10px; 
       width: 100%;
       max-width: 400px;
-      margin: 0 auto; /* Center align on mobile */
+      /* Center align on mobile */
+      margin: 0 auto; 
     }
   
     .subscribe-form input,
