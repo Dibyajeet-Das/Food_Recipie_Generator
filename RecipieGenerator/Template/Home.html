@@ -14,7 +14,8 @@
     <nav class="navbar">
         <ul>
             <li class="brand"><a href="#home" style="font-style: italic; font-weight: bold;">Food Delight</a></li>
-            <div class="nav-items">
+            <div class="hamburger" id="hamburger">&#9776;</div> <!-- Hamburger icon -->
+            <div class="nav-items" id="nav-menu">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#gallery">Gallery</a></li>
                 <li><a href="#search">Search</a></li>
@@ -90,13 +91,63 @@
         <h2>Generated Recipes</h2>
         <div id="recipe-results"></div>
     </section>
-    <footer>
-        <p>Follow us on:</p>
-        <a href="https://facebook.com" target="_blank">Facebook</a> |
-        <a href="https://twitter.com" target="_blank">Twitter</a> |
-        <a href="https://instagram.com" target="_blank">Instagram</a>
-        <p>&copy; 2025 AI Recipe Generator. All rights reserved.</p>
-    </footer>
-   
+    
+    <footer class="footer">
+        <div class="footer-container">
+          <!-- About Section -->
+          <div class="footer-section">
+            <h3>🍽️ About RecipeGenerator</h3>
+            <p>Your AI-powered kitchen buddy to create delicious meals with your ingredients.</p>
+          </div>
+      
+          <!-- Features Section -->
+          <div class="footer-section">
+            <h3>✨ Features</h3>
+            <ul>
+              <li><a href="#">Generate Recipes</a></li>
+              <li><a href="#">Save Favourites</a></li>
+              <li><a href="#">Upload Ingredients</a></li>
+            </ul>
+          </div>
+      
+          <!-- Useful Links -->
+          <div class="footer-section">
+            <h3>🔗 Useful Links</h3>
+            <ul>
+              <li><a href="#">Your Account</a></li>
+              <li><a href="#">Become an Affiliate</a></li>
+              <li><a href="#">Help</a></li>
+            </ul>
+          </div>
+      
+          <!-- Contact Section -->
+          <div class="footer-section">
+            <h3>📞 Contact</h3>
+            <ul>
+              <li>Email: dibyajeet@recipegenerator.ai</li>
+              <li><a href="#">Instagram</a></li>
+              <li><a href="#">Facebook</a></li>
+              <li><a href="#">LinkedIn</a></li>
+            </ul>
+          </div>
+        </div>
+      
+        <!-- Subscribe Section -->
+        <div class="subscribe-banner">
+          <div class="subscribe-content">
+            <h3>📬 Stay Updated</h3>
+            <p>Get new recipes and kitchen hacks straight to your inbox.</p>
+            <form class="subscribe-form">
+              <input type="email" placeholder="Your email" required>
+              <button type="submit">Subscribe</button>
+            </form>
+          </div>
+        </div>
+      
+        <!-- Bottom Footer -->
+        <div class="footer-bottom">
+          © 2025 RecipeGenerator. All rights reserved.
+        </div>
+      </footer>
 </body>
 </html>
