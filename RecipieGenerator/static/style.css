@@ -142,6 +142,33 @@ body {
         padding: 10px;
     }
 }
+/* For brand with icon and text */
+.brand-link {
+    display: flex;
+    align-items: center;
+    font-style: italic;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+}
+
+.brand-icon {
+    height: 35px;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+/* Mobile responsiveness for the icon */
+@media (max-width: 768px) {
+    .brand-icon {
+        height: 28px;
+        margin-right: 6px;
+    }
+
+    .brand-link {
+        font-size: 1em;
+    }
+}
 /*----------------------------------------------------------------------------------------*/
 .gallery {
     padding: 80px;
