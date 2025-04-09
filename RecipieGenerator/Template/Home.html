@@ -13,8 +13,13 @@
 <body>
     <nav class="navbar">
         <ul>
-            <li class="brand"><a href="#home" style="font-style: italic; font-weight: bold;">Food Delight</a></li>
-            <div class="hamburger" id="hamburger">&#9776;</div> <!-- Hamburger icon -->
+          <li class="brand">
+            <a href="#home" class="brand-link">
+              <img src="{% static '/images/nav.gif' %}" alt="Food Icon" class="brand-icon">
+              Food Delight
+            </a>
+          </li>
+            <div class="hamburger" id="hamburger">&#9776;</div>
             <div class="nav-items" id="nav-menu">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#gallery">Gallery</a></li>
