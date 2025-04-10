@@ -9,6 +9,7 @@ generator = pipeline("text-generation", model="gpt2", device=-1)
 #"microsoft/phi-2" change the model for more better results
 
 def Home(request):
+    #Render is used to return the HTML page to the user 
     return render(request, "Home.html")  
 
 def GenerateRecipe(dish_name):
@@ -21,7 +22,8 @@ def GenerateRecipe(dish_name):
         recipe_text = generated_response[0]['generated_text'].replace(prompt, "").strip()
 
         if len(recipe_text) < 20 or "Recipe for" in recipe_text:
-            return None  #AI failed to generate a proper recipe
+            return None  
+        #AI failed to generate a proper recipe
 
         return recipe_text
     except Exception:

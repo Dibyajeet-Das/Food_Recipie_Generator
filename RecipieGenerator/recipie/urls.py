@@ -1,7 +1,8 @@
 from django.urls import path
-from .views import Home, GetRecipe  # Import views
+#importing the views from the views.py file
+from .views import Home, GetRecipe  
 
 urlpatterns = [
-    path('', Home, name='Home'),  # ✅ Fix: Removed space before ''
-    path('get-recipe/', GetRecipe, name='get-recipe'),  # API endpoint
+    path('', Home, name='Home'),  
+    path('get-recipe/', GetRecipe, name='get-recipe'),# API endpoint
 ]
