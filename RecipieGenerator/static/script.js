@@ -27,20 +27,20 @@ const FoodCards = [
 {
     FrontCard:['/static/images/Dish1.jpg','/static/images/Dish2.jpg','/static/images/Dish3.jpg'],
     BackCard:['An "egg chicken roll" is a street food dish, particularly popular in Kolkata, India, where a paratha (flatbread) is filled with stir-fried chicken and scrambled egg, then rolled up'
-    ,'Probably the best-known Korean dish, bibimbap originated on the eve of Lunar New Year when it was traditional to use up all the vegetables and side-dishes in the house. A hot stone bowl is filled with cooked rice and topped with vegetables, pickled Chinese radish, carrot and mushrooms.'
-    ,'Biryani is a flavorful, layered dish of rice, meat or seafood, and spices that originated in South Asia. Its commonly made with chicken, lamb, or mutton, but can also be made with beef, prawns, or fish. '],
+    ,'Probably the best-known Korean dish, bibimbap originated on the eve of Lunar New Year when it was traditional to use up all the vegetables and side-dishes in the house.'
+    ,'Biryani is a flavorful, layered dish of rice, meat or seafood, and spices that originated in South Asia.'],
 },
 {
     FrontCard:['/static/images/Dish4.jpg','/static/images/Dish5.jpg','/static/images/Dish6.jpg'],
-    BackCard:['This rice bowl dish is almost as popular as ramen in Japan and a common lunchtime choice among busy Japanese workers. Donburi is made by preparing (normally by simmering or frying) various meat, fish and vegetables and serving over steamed rice in large bowls.'
-    ,'chicken fried steak was born to go with American food classics like mashed potatoes and black-eyed peas.A slab of tenderized steak breaded in seasoned flour and pan fried, it’s kin to the Weiner Schnitzel brought to Texas by Austrian and German immigrants, who adapted their veal recipe to use the bountiful beef found in Texas.'
-    ,'The most frequently preferred pizza recipe in Italy is Margarita, and it is consumed all over the world with its light structure. Prepared in a very practical way, Margarita contains flour, olive oil, water, dry yeast, salt, granulated sugar, tomatoes, oregano, basil, and mozzarella cheese.'],
+    BackCard:['This rice bowl dish is almost as popular as ramen in Japan and a common lunchtime choice among busy Japanese workers.'
+    ,'chicken fried steak was born to go with American food classics like mashed potatoes and black-eyed peas.A slab of tenderized steak breaded in seasoned flour and pan fried, found in Texas.'
+    ,'The most frequently preferred pizza recipe in Italy is Margarita, and it is consumed all over the world with its light structure.'],
 },
 {
     FrontCard:['/static/images/Dish7.jpg','/static/images/Dish8.jpg','/static/images/Dish9.jpg'],
-    BackCard:['Shchi is a deceptively simple soup with a complex taste. What may look like a simple cabbage soup is actually a filling but light soup made from sauerkraut, cabbage, or other green leaves. Shchi is an integral part of Russian cuisine, and has been eaten almost daily for centuries in Russia'
-    ,'DA famous Indo-Chinese dish that combines tender chicken pieces with flavorful noodles. The savoury broth enhances the taste and complements the textures of the dish, making it a popular choice for both quick meals and special occasions.'
-    ,'Jjigae is a type of rich, spicy stew. This seafood and silken tofu version is called sundubu and is served like bibimbap in a hot stone bowl. Discover more warming stew recipes with our winter stew recipes and vegan stew recipes.'],
+    BackCard:['Shchi is a deceptively simple soup with a complex taste. Shchi is an integral part of Russian cuisine, and has been eaten almost daily for centuries in Russia'
+    ,'DA famous Indo-Chinese dish that combines tender chicken pieces with flavorful noodles. The savoury broth enhances the taste and complements the textures of the dish.'
+    ,'Jjigae is a type of rich, spicy stew. This seafood and silken tofu version is called sundubu and is served like bibimbap in a hot stone bowl.'],
 },
 ];
 
@@ -150,8 +150,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 throw new Error(errorData.error || "Failed to fetch recipe.");
             }
 
+            //Here The json data is paresed into a javascript object(data)
             let data = await response.json();
-            console.log("✅ Recipe Data:", data);
+            console.log("Recipe Data:", data);
 
             // Convert recipe text into points
             let recipeLines = data.recipe.split("\n").filter(line => line.trim() !== "");  
@@ -161,8 +162,26 @@ document.addEventListener("DOMContentLoaded", function () {
                 <div class="recipe-box">
                     <h3>${data.dish}</h3>
                     <ul>${formattedRecipe}</ul>
+                    <button id="download-btn" style="margin-top: 10px;">Download Recipe</button>
                 </div>
             `;
+            document.getElementById("download-btn").addEventListener("click", function () {
+                const recipeText = data.recipe;
+                //Blob stands for Binary Large Object, which is a data type that can hold binary data
+                //[recipeText] helps to take a array of recipie text
+                //"text/plain" this tells the browser that the content is a plain text
+                const blob = new Blob([recipeText], { type: "text/plain" });
+                //Here we have taken "a" element to create a link for the download
+                const link = document.createElement("a");
+                //Helps the browser to download the file 
+                link.href = URL.createObjectURL(blob);
+                //sets the default file name for the download
+                link.download = `${data.dish.replace(/\s+/g, "_").toLowerCase()}_recipe.txt`;
+                document.body.appendChild(link);
+                link.click();
+                //Removes the link from the download after the download is completed
+                document.body.removeChild(link);
+            });
         } catch (error) {
             console.error("Error fetching recipe:", error);
             resultDiv.innerHTML = "<p style='color:red;'>❌ Failed to fetch recipe. Try again.</p>";
