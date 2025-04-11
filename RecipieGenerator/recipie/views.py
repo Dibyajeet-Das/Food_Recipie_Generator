@@ -37,7 +37,7 @@ def GetRecipe(request):
 
     if not dish_name:
         return JsonResponse({"error": "Please enter a dish name."}, status=400)
-
+    #Taking this variable aand using it in javascript for download functionality
     recipe = GenerateRecipe(dish_name)
 
     if not recipe:
