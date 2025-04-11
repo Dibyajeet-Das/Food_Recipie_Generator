@@ -3,7 +3,8 @@ Welcome to Food Delight, an AI-powered food recipe generator that helps users in
 
 Created this project by using Django for the backend and a fully responsive HTML, CSS, and JavaScript frontend, the web based app offers a dynamic and modern user experience across both mobile and desktop platforms.
 
-#Features
+Features
+-----------------------------------------
 • AI-powered recipe generation using a fine-tuned GPT-2 transformer model
 
 • Enter the name of a dish and get a complete, custom recipe
@@ -12,25 +13,30 @@ Created this project by using Django for the backend and a fully responsive HTML
 
 • Responsive design – optimized for both desktop and mobile views
 
-• Email subscription form with a modern style footer
+• Email subscription form with a modern style footer 
+
+• Can download your generated recipie 
 
 • Fast and interactive frontend powered by vanilla JavaScript
 
-#Tech Stack
+Tech Stack
+---------------------------------------
 • Backend: Django (Python)
 
 • Frontend: HTML, CSS, JavaScript
 
 • AI Model: GPT-2 Transformer 
 
-#Getting Started
+
+Getting Started
+----------------------------------------
 ➤ Prerequisites
 
 • Python 3.8
 • pip
 • virtualenv (recommended)
 
-#Installation
+Installation
 ➤ Clone the repository:
 git clone https://github.com/yourusername/food-delight.git
 cd food-delight
@@ -61,11 +67,13 @@ Use the footer subscribe form to get updates
 
 Screenshots
 
-✅ To-Do / Future Plan
+To-Do / Future Plan
+-----------------------------------------------
+Save favorite recipes to user profiles
+Social sharing (copy link / share on WhatsApp, X, Instagram)
+ 
 
- Save favorite recipes to user profiles
- Social sharing (copy link / share on WhatsApp, X, Instagram)
-
-🤝 Contributing
+Contributing
+----------------------------------
 Contributions are welcome! Feel free to open an issue or submit a pull request with enhancements or bug fixes.
 
