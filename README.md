@@ -27,9 +27,9 @@ Tech Stack
 
 • Frontend: HTML, CSS, JavaScript
 
-• AI Model: 1) mbien/recipenlg (GPT-2) – Recipe generation
-
-•           2) stabilityai/stable-diffusion-2-1 – Image generation
+• AI Model: 
+• 1) mbien/recipenlg (GPT-2) – Recipe generation
+• 2) stabilityai/stable-diffusion-2-1 – Image generation
 
 
 Getting Started
