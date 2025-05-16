@@ -41,6 +41,7 @@ Getting Started
 • virtualenv (recommended)
 
 Installation
+
 ➤ Clone the repository:
 git clone https://github.com/yourusername/food-delight.git
 cd food-delight
