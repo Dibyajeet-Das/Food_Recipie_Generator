@@ -5,4 +5,5 @@ from .views import Home, GetRecipe
 urlpatterns = [
     path('', Home, name='Home'),  
     path('get-recipe/', GetRecipe, name='get-recipe'),#API endpoint
+    
 ]
