@@ -116,75 +116,77 @@ document.addEventListener("DOMContentLoaded", function () {
     const resultDiv = document.getElementById("recipe-results");
 
     if (!searchButton || !resultDiv) {
-        console.error("❌Error: Button or result div not found.");
+        console.error("❌ Error: Button or result div not found.");
         return;
     }
 
     searchButton.addEventListener("click", async function () {
-        let inputField = document.getElementById("recipe-search");
-        //Here .value helps to extract the text and trim() function helps to remove the extra spaces
-        //from the start and end of the string
-        let dish = inputField.value.trim();
+        const inputField = document.getElementById("recipe-search");
+        const dish = inputField.value.trim();
 
         if (!dish) {
             resultDiv.innerHTML = "<p style='color:red;'>⚠ Please enter a dish name.</p>";
             return;
         }
 
+        // Show loading spinner
         resultDiv.innerHTML = `
-        <div class="loading-container">
-            <p>🔄 Generating recipe...</p>
-            <img src="/static/images/Generate.gif" alt="Loading" class="loading-gif">
-        </div>
+            <div class="loading-container">
+                <p>🔄 Generating recipe...</p>
+                <img src="/static/images/Generate.gif" alt="Loading" class="loading-gif">
+            </div>
         `;
 
         try {
-            console.log(`🔍 Fetching: /get-recipe/?dish=${dish}`);
-            //await is used to wait for the fetch function to complete before moving
-            //encodes special characters in a string so it can safely be used in a URL.helps change the the spaces into symbols
-            //any special character in the string which will easy to transmit over the network
-            let response = await fetch(`/get-recipe/?dish=${encodeURIComponent(dish)}`);
-
+            const response = await fetch(`/get-recipe/?dish=${encodeURIComponent(dish)}`);
             if (!response.ok) {
-                let errorData = await response.json();
+                const errorData = await response.json();
                 throw new Error(errorData.error || "Failed to fetch recipe.");
             }
 
-            //Here The json data is paresed into a javascript object(data)
-            let data = await response.json();
+            const data = await response.json();
             console.log("Recipe Data:", data);
 
-            // Convert recipe text into points
-            let recipeLines = data.recipe.split("\n").filter(line => line.trim() !== "");  
-            let formattedRecipe = recipeLines.map(line => `<li>${line}</li>`).join("");
+            if (!data.recipe) {
+                resultDiv.innerHTML = "<p style='color:red;'>❌ Recipe generation failed. Please try another dish.</p>";
+                return;
+            }
 
-            resultDiv.innerHTML = `
-                <div class="recipe-box">
+            // Build recipe HTML
+            let recipeHTML = `<div class="recipe-box">`;
+
+            // Display image if available
+            if (data.image) {
+                recipeHTML += `
                     <h3>${data.dish}</h3>
-                    <ul>${formattedRecipe}</ul>
-                    <button id="download-btn" style="margin-top: 10px;">Download Recipe</button>
-                </div>
-            `;
-            document.getElementById("download-btn").addEventListener("click", function () {
-                const recipeText = data.recipe;
-                //Blob stands for Binary Large Object, which is a data type that can hold binary data
-                //[recipeText] helps to take a array of recipie text
-                //"text/plain" this tells the browser that the content is a plain text
-                const blob = new Blob([recipeText], { type: "text/plain" });
-                //Here we have taken "a" element to create a link for the download
-                const link = document.createElement("a");
-                //Helps the browser to download the file 
-                link.href = URL.createObjectURL(blob);
-                //sets the default file name for the download
-                link.download = `${data.dish.replace(/\s+/g, "_").toLowerCase()}_recipe.txt`;
-                document.body.appendChild(link);
-                link.click();
-                //Removes the link from the download after the download is completed
-                document.body.removeChild(link);
+                    <img src="data:image/png;base64,${data.image}" alt="Image of ${data.dish}" class="dish-image">
+                `;
+            }
+
+            // Display full recipe text exactly as generated
+            recipeHTML += `
+                <pre class="recipe-text">${data.recipe}</pre>
+                <button id="download-btn">Download Recipe</button>
+            </div>`;
+
+            // Render recipe
+            resultDiv.innerHTML = recipeHTML;
+
+            // Download functionality
+            document.getElementById("download-btn").addEventListener("click", () => {
+                const blob = new Blob([data.recipe], { type: "text/plain" });
+                const url = URL.createObjectURL(blob);
+
+                const a = document.createElement("a");
+                a.href = url;
+                a.download = `${data.dish.replace(/\s+/g, "_")}_Recipe.txt`;
+                a.click();
+                URL.revokeObjectURL(url);
             });
+
         } catch (error) {
-            console.error("Error fetching recipe:", error);
-            resultDiv.innerHTML = "<p style='color:red;'>❌ Failed to fetch recipe. Try again.</p>";
+            console.error(error);
+            resultDiv.innerHTML = "<p style='color:red;'>An error occurred. Please try again.</p>";
         }
     });
 });
