@@ -1,5 +1,5 @@
 # Food Delight – AI-Powered Food_Recipe_Generator
-Welcome to Food Delight, an AI-powered food recipe generator that helps users instantly discover creative and delicious recipes. This project uses a GPT-2 transformer model to generate unique recipes based on dish names provided by the user. In The comment section inside the code i have provided a other model for more enhanced recipie
+Welcome to Food Delight, an AI-powered food recipe generator that helps users instantly discover creative and delicious recipes. This project uses a GPT-2 transformer model to generate unique recipes based on dish names provided by the user It also generates the Image of that recipe. In The comment section inside the code i have provided a other model for more enhanced recipie
 
 Created this project by using Django for the backend and a fully responsive HTML, CSS, and JavaScript frontend, the web based app offers a dynamic and modern user experience across both mobile and desktop platforms.
 
@@ -7,7 +7,9 @@ Features
 -----------------------------------------
 • AI-powered recipe generation using a fine-tuned GPT-2 transformer model
 
-• Enter the name of a dish and get a complete, custom recipe
+• Produces realistic images of the dish using Stable Diffusion
+
+• Enter the name of a dish and get a complete, custom recipe with an Image
 
 • Search for recipes by name
 
@@ -27,7 +29,7 @@ Tech Stack
 
 • AI Model: 1) mbien/recipenlg (GPT-2) – Recipe generation
 
-            2) stabilityai/stable-diffusion-2-1 – Image generation
+•           2) stabilityai/stable-diffusion-2-1 – Image generation
 
 
 Getting Started
