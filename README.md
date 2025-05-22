@@ -43,7 +43,7 @@ Getting Started
 Installation
 
 ➤ Clone the repository:
-git clone https://github.com/yourusername/food-delight.git
+git clone https://github.com/myname/food-delight.git
 cd food-delight
 
 ➤Set up a virtual environment:
